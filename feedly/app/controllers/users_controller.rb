@@ -2,14 +2,17 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @statuses = @user.statuses.paginate(page: params[:page])
+    @status=@user.statuses.find(params[:id])
   end
 
+
   def new
-  	@user = User.new
+    @user = User.new
   end
 
   def create
-  	@user = User.new(user_params)    
+    @user = User.new(user_params)    
     if @user.save
       log_in @user
       flash.now[:success]= "Welcome to Feedly!"
@@ -19,10 +22,9 @@ class UsersController < ApplicationController
     end
   end
 
+private
 
- private
-
- def user_params
+  def user_params
     params.require(:user).permit(:name,:email, :password, :password_confirmation)
- end
+  end
 end

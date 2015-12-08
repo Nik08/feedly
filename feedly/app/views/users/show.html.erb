@@ -1,5 +1,31 @@
-<%= @user.name %>, <%= @user.email %>
+
+
+
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="col-md-4">
+      <h1>
+        <%= @user.name %>
+      </h1>
+  </aside>
+
+
+  <div class="col-md-8">
+    <% if @user.statuses.any? %>
+      <h3>statuses (<%= @user.statuses.count %>)</h3>
+      <ol class="statuses">
+        <%= render @statuses %>
+      </ol>
+      <%= will_paginate @statuses %>
+    <% end %>
+  </div>
+</div>
+
+<section class="status_form">
+        <%= render 'shared/status_form' %>
+      </section>
 
 <% if logged_in? %>
   <%= link_to "Log out", logout_path, method: "delete" %>
+  <%= link_to "New Status", root_url %>
 <% end %>
