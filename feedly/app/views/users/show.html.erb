@@ -21,10 +21,6 @@
   </div>
 </div>
 
-<section class="status_form">
-        <%= render 'shared/status_form' %>
-      </section>
-
 <% if logged_in? %>
   <%= link_to "Log out", logout_path, method: "delete" %>
   <%= link_to "New Status", root_url %>

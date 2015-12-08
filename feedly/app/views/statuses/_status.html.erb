@@ -4,4 +4,6 @@
   <span class="timestamp">
     Posted <%= time_ago_in_words(status.created_at) %> ago.
   </span>
+  <%= link_to "delete", status, method: :delete, data: { confirm: "You sure?" } %>
+
 </li>
