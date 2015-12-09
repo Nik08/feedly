@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @statuses = @user.statuses.paginate(page: params[:page])
+    @statuses = @user.statuses.paginate(page: params[:page], :per_page => 4)
   end
 
 

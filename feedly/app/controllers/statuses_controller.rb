@@ -11,6 +11,7 @@ class StatusesController < ApplicationController
       flash[:success] = "status created!"
       redirect_to root_url
     else
+      @feed_items = []
       render 'static_pages/home'
     end
   end
@@ -18,7 +19,7 @@ class StatusesController < ApplicationController
   def destroy
   	@status.destroy
     flash[:success] = "Status deleted"
-    redirect_to current_user
+    redirect_to root_url
 
   end
 
@@ -31,6 +32,6 @@ class StatusesController < ApplicationController
     end
 
     def status_params
-      params.require(:status).permit(:content)
+      params.require(:status).permit(:content, :picture)
     end
 end
