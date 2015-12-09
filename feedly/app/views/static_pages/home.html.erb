@@ -2,15 +2,7 @@
   <div class="container">
   <nav>
     <ul class="nav navbar-nav navbar-right">
-      <li>
-        <%= form_for :search, url: search_path, method: :get do |f| %>
-          <p>
-            <%= f.label "Search " %>
-            <%= text_field_tag :q, params[:q] %>
-            <%= submit_tag "Go", name: nil %>
-          </p>
-        <% end %>
-      </li>
+      <li><%= render 'shared/search_bar' %></li>
       <li><%= link_to "Log Out", logout_path, method: "delete" %></li>
     </ul>
   </nav>
