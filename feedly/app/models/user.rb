@@ -1,4 +1,7 @@
+require 'elasticsearch/model'
 class User < ActiveRecord::Base
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
   has_many :statuses, dependent: :destroy
 	attr_accessor :remember_token
 	before_save { self.email = email.downcase }
@@ -45,4 +48,25 @@ class User < ActiveRecord::Base
       Status.where("user_id = ?", id)
     end
 
+    def self.search(query)
+      
+      __elasticsearch__.search(
+      {
+        query: {
+        multi_match: {
+          query: query,
+          fields: ['name']
+        }
+      },
+        highlight: {
+          pre_tags: ['<em>'],
+          post_tags: ['</em>'],
+          fields: {
+            name: {}
+          }
+        }
+      }
+    )
+    end
 end
+User.import force: true
