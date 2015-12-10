@@ -3,10 +3,9 @@ class StatusesController < ApplicationController
   before_action :correct_user,   only: :destroy
 
 
-
-
   def create
   	@status = current_user.statuses.build(status_params)
+    @status.votes=0
     if @status.save
       flash[:success] = "status created!"
       redirect_to root_url
@@ -22,6 +21,15 @@ class StatusesController < ApplicationController
     redirect_to root_url
 
   end
+
+  def upvote
+    @status = Status.find(params[:id])
+    @status.votes=@status.votes+1
+    @status.save
+    redirect_to root_url
+  end
+
+
 
 
   private

@@ -6,6 +6,8 @@
   </span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(status.created_at) %> ago.
-  	<%= link_to "delete", status, method: :delete, data: { confirm: "You sure?" } %>
+    <%= button_to pluralize(status.votes,'Like'), upvote_status_path(status), method: :post %>
+    <%= link_to "Comment",comment_path %>
+  	<%= link_to "Delete", status, method: :delete, data: { confirm: "You sure?" } %>
   </span>
 </li>

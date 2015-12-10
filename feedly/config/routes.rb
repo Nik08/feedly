@@ -12,7 +12,12 @@ Rails.application.routes.draw do
    post   'login'   => 'sessions#create'
    delete 'logout'  => 'sessions#destroy'
    resources :users
-   resources :statuses, only: [:create, :destroy]
+   resources :statuses, only: [:create, :destroy] do
+    resources :comments, only: [:show,:create, :destroy]
+    member do
+      post 'upvote'
+    end
+   end
 
 
   # Example of regular route:
