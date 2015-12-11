@@ -1,7 +1,0 @@
-<%= form_for :search, url: search_path, method: :get do |f| %>
-  <p>
-    <%= f.label "Search " %>
-    <%= text_field_tag :q, params[:q] %>
-    <%= submit_tag "Go", name: nil %>
-  </p>
-<% end %>
