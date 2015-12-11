@@ -1,0 +1,5 @@
+1)All the gems which are used in the project are mentioned in gemfile with their functionality description.
+2)Mysql gem -Mysql server is integrated with the application.
+3)Elastic search gem - Elastic search server integration with the application.
+4)Bootstrap - For the UI development.
+

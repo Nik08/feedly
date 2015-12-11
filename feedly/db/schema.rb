@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151209084911) do
+ActiveRecord::Schema.define(version: 20151211062204) do
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "body",       limit: 65535
+    t.integer  "user_id",    limit: 4
+    t.integer  "status_id",  limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "comments", ["status_id"], name: "index_comments_on_status_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "statuses", force: :cascade do |t|
     t.text     "content",    limit: 65535
@@ -19,6 +30,8 @@ ActiveRecord::Schema.define(version: 20151209084911) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.string   "picture",    limit: 255
+    t.integer  "upvotes",    limit: 4
+    t.integer  "downvotes",  limit: 4
   end
 
   add_index "statuses", ["user_id", "created_at"], name: "index_statuses_on_user_id_and_created_at", using: :btree
@@ -35,5 +48,7 @@ ActiveRecord::Schema.define(version: 20151209084911) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  add_foreign_key "comments", "statuses"
+  add_foreign_key "comments", "users"
   add_foreign_key "statuses", "users"
 end

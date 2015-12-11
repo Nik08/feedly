@@ -9,7 +9,7 @@ class StaticPagesController < ApplicationController
 
 
 
-
+ #search action used with elastic search
   def search
   	if params[:q].nil?
       @users = []
@@ -17,4 +17,5 @@ class StaticPagesController < ApplicationController
       @users = User.search params[:q]
     end
   end
+
 end

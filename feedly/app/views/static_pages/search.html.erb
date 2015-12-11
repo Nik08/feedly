@@ -1,8 +1,10 @@
 
 <ul>
+  <h3><%= @users.count%> Result </h3><hr> 
   <% @users.each do |user| %>
     <li>
       <h3>
+
         <%= link_to user.try(:highlight).try(:name) ? user.highlight.name[0].html_safe : user.name,
           controller: "users",
           action: "show",

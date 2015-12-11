@@ -5,11 +5,12 @@ class UsersController < ApplicationController
     @statuses = @user.statuses.paginate(page: params[:page], :per_page => 4)
   end
 
-
+  #redirects to the signup page
   def new
     @user = User.new
   end
 
+  #creates a user, used in signup
   def create
     @user = User.new(user_params)    
     if @user.save

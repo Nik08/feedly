@@ -2,6 +2,7 @@ require 'elasticsearch/model'
 class User < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
+  has_many :comments, dependent: :destroy
   has_many :statuses, dependent: :destroy
 	attr_accessor :remember_token
 	before_save { self.email = email.downcase }
@@ -43,7 +44,7 @@ class User < ActiveRecord::Base
     def forget
       update_attribute(:remember_digest, nil)
     end
-
+    #Returns feeds of user with their status
     def feed
       Status.where("user_id = ?", id)
     end

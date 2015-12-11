@@ -1,3 +1,4 @@
+
 source 'https://rubygems.org'
 
 
@@ -25,17 +26,23 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 #to create fake data
-gem 'carrierwave', '0.10.0'
-gem 'mini_magick', '3.8.0'
-gem 'fog', '1.36.0'
 gem 'faker','1.4.2'
+#it provides rails the functionality of uploading images
+gem 'carrierwave', '0.10.0'
+#it helps in re-sizing of image
+gem 'mini_magick', '3.8.0'
+#this gem would be useful while production for saving the uploaded files.
+gem 'fog', '1.36.0'
+
 gem 'bootstrap-sass', '3.2.0.0'
 gem 'sprockets', '~> 2.0'
 gem 'less-rails-bootstrap', '~> 3.3', '>= 3.3.5.0'
 gem 'therubyracer','~>0.12.2'
+#this gem enables elastic search in the project
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
-
+#this gem helps in debugging 
+gem 'pry', :group => :development
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -48,9 +55,7 @@ gem 'elasticsearch-rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
   gem 'minitest-reporters'
-
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 

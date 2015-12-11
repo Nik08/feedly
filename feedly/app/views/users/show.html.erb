@@ -21,13 +21,11 @@
 
 
   <div class="col-md-8">
-    <% if @user.statuses.any? %>
-      <h3>statuses (<%= @user.statuses.count %>)</h3>
+      <h3>Statuses (<%= @user.statuses.count %>)</h3>
       <ol class="statuses">
         <%= render @statuses %>
       </ol>
-      <%= will_paginate @statuses %>
-    <% end %>
+      <%= will_paginate @statuses %>    
   </div>
 </div>
 

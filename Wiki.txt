@@ -1,0 +1,53 @@
+I have followed MVC design pattern with Ruby on rails.
+
+1)This application start with the login and singup and functionality which is the creation of new user.
+2)User is then redirected to the home page where a user can post status and can search for other users as well.
+3)When a user logs in, a session is created and on log out , session is destroyed.
+4)User on searching redirected to page with users profile link which on click redirects to the user page.
+
+Database design for the following application is designed in this way:
+
+
+1) This is the schema for user table:
+
+create_table "users", force: :cascade do |t|
+    t.string   "name",            limit: 255
+    t.string   "email",           limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.string   "password_digest", limit: 255
+    t.string   "remember_digest", limit: 255
+  end
+
+ 2) This is the schema for status table
+
+ create_table "statuses", force: :cascade do |t|
+    t.text     "content",    limit: 65535
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "picture",    limit: 255
+    t.integer  "upvotes",    limit: 4
+    t.integer  "downvotes",  limit: 4
+  end
+
+3) This is the schema for the comment table
+
+create_table "comments", force: :cascade do |t|
+    t.text     "body",       limit: 65535
+    t.integer  "user_id",    limit: 4
+    t.integer  "status_id",  limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+There is an association between all the tables.
+To see more detailed structure of database, look for the schema.rb page.
+
+BETTER APPROACH:
+
+1) For the "like/dislike" functionlity.
+I have only kept the count of the upvotes and downvotes for the status. I could not successfully implement the like/ dislike functionality for both status and comments.
+ 
+The better approach would have been to maintain the separate table for both like and dislike and then to assosciate each status and each users with the likes and dislikes.
+
