@@ -1,0 +1,46 @@
+<% if logged_in? %>
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Feedly</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><%= render 'shared/search_bar' %></li>
+        
+        <li><%= link_to "Log Out", logout_path, method: "delete" %></li>
+      </ul>
+     
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+  <div class="container">
+  
+</div>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+      <section class="status_form">
+        <%= render 'shared/status_form' %>
+      </section>
+    </aside>
+    <div class="col-md-8">
+      <h3>Status Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
+  </div>
+<% else %>
+
+<div class="center jumbotron">
+  <h1>Welcome to Feedly</h1>
+    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+    <%= link_to "Log in", login_path, class: "btn btn-lg btn-primary" %>
+</div>
+<% end %>
+
