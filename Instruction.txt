@@ -1,0 +1,36 @@
+This project is created using Rails 3 and is integrated with the Mysql.
+
+ DOWNLOAD AND INSTALLATIONS:
+
+1)Install Ruby- https://www.ruby-lang.org/en/downloads/
+2)Install Rails- https://www.rubyonrails.org/download/
+3)Install Mysql 5.6.19
+
+
+4)ELASTIC SEARCH DOWNLOAD AND INSTALLATION (These steps are for the ubuntu operating system.)
+
+-Download Elastic search- elasticsearch.org/download 
+-Install Elastic Search in the system- sudo dpkg -i elasticsearch-[version].deb
+-To start the elastic search server : 
+ a) sudo update-rc.d elasticsearch defaults 95 10
+ b)sudo /etc/init.d/elasticsearch start
+-Then re-start the system and open this url: http://localhost:9200 and you’ll see ElasticSearch respond like so:
+
+{
+  "status" : 200,
+  "name" : "Anvil",
+  "version" : {
+    "number" : "1.2.1",
+    "build_hash" : "6c95b759f9e7ef0f8e17f77d850da43ce8a4b364",
+    "build_timestamp" : "2014-06-03T15:02:52Z",
+    "build_snapshot" : false,
+    "lucene_version" : "4.8"
+  },
+  "tagline" : "You Know, for Search"
+}
+
+STARTING UP THE PROJECT LOCALLY:
+
+1) Change into the directory of the project.
+2) Start the rails server : rails s
+3)Open this url : http://localhost:3000 and you will see the signup and login page.
