@@ -32,5 +32,7 @@ This project is created using Rails 3 and is integrated with the Mysql.
 STARTING UP THE PROJECT LOCALLY:
 
 1) Change into the directory of the project.
-2) Start the rails server : rails s
-3)Open this url : http://localhost:3000 and you will see the signup and login page.
+2)Carry on all the migrations by:  rake db:migrate
+3)To create a temp data run: rake db:seed
+4) Start the rails server: rails s
+5)Open this url: http://localhost:3000 and you will see the signup and login page.
